@@ -1,4 +1,5 @@
-- implement Breusch-Pagan Test
+- implement Breusch-Pagan Test for heteroscedasticity
+- implement Durbin Watson Test for serial correlation
 - overview GLMs
 - PCA
 - factor analysis
