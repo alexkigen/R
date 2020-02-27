@@ -6,3 +6,4 @@ Folder: Use
 General: general tools and scripts e.g. stringing, visualization, etc.
 Regressions: regression modeling
 VizTools: visualization
+GLMS: generalized linear models
