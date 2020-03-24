@@ -1,4 +1,5 @@
 #demonstrate principal component analysis in R
+
 setwd("/Users/Kigen/Documents/r")
 
 #Step 1: Read in Data
