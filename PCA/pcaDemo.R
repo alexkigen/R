@@ -32,6 +32,12 @@ varExpSmith = data.frame(pc1 = eigValSmith[1], pc2 = eigValSmith[2])/sum(eigValS
 featureVector = matrix(eigVecSmith[,1])
 print(featureVector)
 
-#Step 8: Derive New Data
-smith8 = featureVector %*%smith3$x
+#Step 8: Derive New Data using the first principal component
+smith8 = t((featureVector)) %*% t((smith3))
 print(smith8)
+
+#Step 9: Visualize model
+par(mfrow=c(1,1))
+plot(smith3$x, smith3$y, type = "p", col = "blue")
+lines(smith3$x, smith8, type = "p", col = "red")
+
