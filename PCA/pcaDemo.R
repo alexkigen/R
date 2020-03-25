@@ -1,4 +1,5 @@
 #demonstrate principal component analysis in R
+#Reference: https://ourarchive.otago.ac.nz/bitstream/handle/10523/7534/OUCS-2002-12.pdf?sequence=1&isAllowed=y
 
 setwd("/Users/Kigen/Documents/r")
 
