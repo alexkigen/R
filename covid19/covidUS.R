@@ -18,7 +18,7 @@ ggplot(data = covidUSAggregate, aes(x = day, y = cases)) +
 ggplot(data = covidUSAggregate[1:40,], aes(day, cases)) +
   geom_point() +
   geom_smooth()
-  
+
 #visualize later dates
 terminal = max(covidUSAggregate$day)
 ggplot(data = covidUSAggregate[41:terminal, ], aes(day, cases)) +
@@ -28,3 +28,21 @@ ggplot(data = covidUSAggregate[41:terminal, ], aes(day, cases)) +
 #compute conditional cumulative mortality rate
 covidUSAggregate$mortality = with(covidUSAggregate,  deaths/cases)
 plot(covidUSAggregate$mortality, type = "l", col = "red")
+
+ggplot(data =  covidUSAggregate[60:terminal, ], aes(x = day, y = mortality))+
+  geom_point() +
+  geom_smooth()
+
+mu = mean(covidUSAggregate$mortality[60:terminal])
+stdev = sd(covidUSAggregate$mortality[60:terminal])
+
+#fit a histogram based assuming a normal distribution
+sampleData = rnorm(60*60, mean = mu, sd = stdev)
+histogram = hist(sampleData,
+                 breaks = 60)
+
+xfit<-seq(min(sampleData), max(sampleData), length=60)
+yfit<-dnorm(xfit, mean = mu, sd = stdev)
+yfit <- yfit*diff(histogram$mids[1:2])*length(sampleData)
+lines(xfit, yfit, col="blue", lwd=2)
+box()
