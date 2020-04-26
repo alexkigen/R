@@ -11,6 +11,13 @@ covidUSAggregate$day = seq_along(covidUSAggregate$date)
 #visualize aggregate
 require(ggplot2)
 
+#visualize new cases
+plot(diff(covidUSAggregate$cases), type = 'h', lwd = 3,
+     main = "Daily New Cases",
+     xlab = "Days since First Case",
+     ylab = "Count of Cases")
+
+#visualize all cases
 ggplot(data = covidUSAggregate, aes(x = day, y = cases)) +
   geom_point()
 
@@ -37,7 +44,7 @@ mu = mean(covidUSAggregate$mortality[60:terminal])
 stdev = sd(covidUSAggregate$mortality[60:terminal])
 
 #fit a histogram based assuming a normal distribution
-sampleData = rnorm(60*60, mean = mu, sd = stdev)
+sampleData = rnorm(60*600, mean = mu, sd = stdev)
 histogram = hist(sampleData,
                  breaks = 60)
 
